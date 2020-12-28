@@ -19,6 +19,15 @@ train("Oak Park", "Naperville", 12).
 %Rules
 
 %return Population of chicago :
-
 p(XPopulation) :- city("Chicago",_,XPopulation).
 p(XPopulation)?
+
+
+//cmd
+
+dlv.exe test2.dlv -brave
+
+output:
+5000000
+
+//End cmd
