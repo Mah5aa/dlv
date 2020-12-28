@@ -1,0 +1,24 @@
+%DataSet Facts
+
+city("Chicago", 180, 5000000).
+city("Evanston", 190, 300000).
+city("Oak Park", 150, 500000).
+city("Naperville", 160, 22000).
+
+road("Chicago", "Evanston", 13).
+road("Chicago", "Evanston", 14).
+road("Chicago", "Oak Park", 8).
+road("Oak Park", "Naperville", 20).
+road("Chicago", "Naperville", 18).
+
+train("Chicago", "Evanston", 20).
+train("Chicago", "Oak Park", 34).
+train("Oak Park", "Naperville", 12).
+
+
+%Rules
+
+%return Population of chicago :
+
+p(XPopulation) :- city("Chicago",_,XPopulation).
+p(XPopulation)?
