@@ -1,0 +1,10 @@
+// to calculate sum of movies time should write function
+
+p(T) :- #sum{Time : actor(Id1,X,Y,_) , cast(Id1,Id2) , movie(Id2,_,_,Time)}=T.
+p(T)?
+
+//cmd 
+
+output: 2956
+
+//End cmd
