@@ -1,0 +1,11 @@
+//on test3.dlv dataset for find actor who worked in more than 1 movie
+
+p(X,Y) :- actor(_,X,Y,_) , #count{Id2 : actor(Id1,X,Y,_) , cast(Id1,Id2)}>1.
+p(X,Y)?
+
+//cmd
+
+ output:
+ "kevin", "spacey"
+ 
+//End cmd
