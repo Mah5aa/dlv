@@ -1,0 +1,106 @@
+actor(101, "james", "stewart", m).
+actor(102, "deborah", "kerr", f).
+actor(103, "peter", "otoole", m).
+actor(104, "robert", "de niro", m).
+actor(105, "f. murray", "abraham", m).
+actor(106, "harrison", "ford", m).
+actor(107, "nicole", "kidman", f).
+actor(108, "stephen", "baldwin", m).
+actor(109, "jack", "nicholson", m).
+actor(110, "mark", "wahlberg", m).
+actor(111, "woody", "allen", m).
+actor(112, "claire", "danes", f).
+actor(113, "tim", "robbins", m).
+actor(114, "kevin", "spacey", m).
+actor(115, "kate", "winslet", f).
+actor(116, "robin", "williams", m).
+actor(117, "jon", "voight", m).
+actor(118, "ewan", "mcgregor", m).
+actor(119, "christian", "bale", m).
+actor(120, "maggie", "gyllenhaal", f).
+actor(121, "dev", "patel", m).
+actor(122, "sigourney", "weaver", f).
+actor(123, "david", "aston", m).
+actor(124, "ali", "astin", f).
+
+cast(101, 901).
+cast(102, 902).
+cast(103, 903).
+cast(104, 904).
+cast(105, 905).
+cast(106, 906).
+cast(107, 907).
+cast(108, 908).
+cast(110, 910).
+cast(111, 911).
+cast(112, 912).
+cast(113, 913).
+cast(114, 914).
+cast(115, 915).
+cast(116, 916).
+cast(117, 917).
+cast(118, 918).
+cast(120, 920).
+cast(121, 921).
+cast(122, 922).
+cast(114, 923).
+cast(109, 909).
+cast(119, 919).
+
+movie(901, "vertigo", 1958, 128).
+movie(902, "the innocents", 1961, 100).
+movie(903, "lawrence of arabia", 1962, 216).
+movie(904, "the deer hunter", 1978, 183).
+movie(905, "amadeus", 1984, 160).
+movie(906, "blade runner", 1982, 117).
+movie(907, "eyes wide shut", 1999, 159).
+movie(908, "the usual suspects", 1995, 106).
+movie(909, "chinatown", 1974, 130).
+movie(910, "boogie nights", 1997, 155).
+movie(911, "annie hall", 1977,  93).
+movie(912, "princess mononoke", 1997, 134).
+movie(913, "the shawshank redemption", 1994, 142).
+movie(914, "american beauty", 1999, 122).
+movie(915, "titanic", 1997, 194).
+movie(916, "good will hunting", 1997, 126).
+movie(917, "deliverance", 1972, 109).
+movie(918, "trainspotting", 1996,  94).
+movie(919, "the prestige", 2006, 130).
+movie(920, "donnie darko", 2001, 113).
+movie(921, "slumdog millionaire", 2008, 120).
+movie(922, "aliens", 1986, 137).
+movie(923, "beyond the sea", 2004, 118).
+movie(924, "avatar", 2009, 162).
+movie(926, "seven samurai", 1954, 207).
+movie(927, "spirited away", 2001, 125).
+movie(928, "back to the future", 1985, 116).
+movie(925, "braveheart", 1995, 178).
+
+% return Name and Lname of actors that didnt work between years 1990 , 2000
+
+all(X,Y) :- actor(Id1,X,Y,_) , cast(Id1,Id2) , movie(Id2,_,_,_).
+res(X,Y) :- actor(Id1,X,Y,_) , cast(Id1,Id2) , movie(Id2,_,Publish,_) , Publish>1990 , Publish<2000.
+p(X,Y) :- all(X,Y) , not res(X,Y).
+p(X,Y)?
+
+//cmd
+
+dlv.exe test3.dlv -brave
+
+output:
+
+"james", "stewart"
+"deborah", "kerr"
+"peter", "otoole"
+"robert", "de niro"
+"f. murray", "abraham"
+"harrison", "ford"
+"jack", "nicholson"
+"woody", "allen"
+"jon", "voight"
+"christian", "bale"
+"maggie", "gyllenhaal"
+"dev", "patel"
+"sigourney", "weaver"
+
+//End cmd
