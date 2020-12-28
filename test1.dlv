@@ -1,0 +1,22 @@
+person(peter).
+person(susi).
+person(roman).
+person(anna).
+
+hasChild(peter,susi).
+hasChild(anna,roman).
+hasChild(roman,peter).
+
+parent(X) :- person(X) , hasChild(X,_).
+parent(X)?
+
+
+//cmd
+dlv.exe test1.dlv -brave
+
+output: 
+peter
+roman
+anna
+
+//End cmd
